@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans text-lg;
+  }
+
+  #nav > div {
+    @apply flex items-center;
+  }
+
+  #nav > div > div + div {
+    @apply ml-4;
+  }
+
+  #nav > div > div:not(:has(.logo)) {
+    @apply inline-block h-5 w-5;
+  }
+
+  #nav > div > div:has(.logo) {
+    @apply fill-white h-8;
+  }
+
+  #nav > div > div > * {
+    @apply h-full;
+  }
+}
+
+@layer components {
+  .sideways {
+    @apply transition-transform duration-500 h-[calc(100%-32px)] w-full absolute left-0 top-8;
+  }
+}
+
+@layer utilities {
+  .transition-ease-elastic {
+    @apply transition-all;
+    @apply !ease-out-elastic !duration-[600ms];
+  }
+
+  .animate-paused {
+    animation-play-state: paused;
+  }
+}
