@@ -156,7 +156,7 @@ const Domain = ({ openedSection, setOpenedSection }) => {
       <List heading="Find a Domain" list={links[0]} />
       <List heading="Auctions for Domains" list={links[1]} />
       <List heading="Domain Tools and Services" list={links[2]} />
-      <div className="h-[260px]" />
+      <div className="aspect-[7/6]" />
       <BottomPoster image={posterDomain} title="Buy a Domain You Want" />
     </Wrapper>
   );

@@ -125,7 +125,7 @@ const Wrapper = ({ openedSection = null, setOpenedSection, children }) => {
 const BottomPoster = ({ image, title }) => {
   return (
     <div className="absolute bottom-0">
-      <a href="#" className="mb-8 ml-2 block">
+      <a href="#" className="mb-2 ml-2 block">
         <span className="overflow-hidden rounded w-full aspect-[7/5] flex items-center">
           <img src={image} alt="#" />
         </span>

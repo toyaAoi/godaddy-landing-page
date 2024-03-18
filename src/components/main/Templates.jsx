@@ -11,7 +11,7 @@ const Template = ({ e }) => {
     >
       <img
         className="w-full absolute top-0 left-0 right-0"
-        src={`/template${e}_mobile.jpg`}
+        src={`template${e}_mobile.jpg`}
         alt=""
       />
       <button className="text-white w-full h-full z-10 bg-[#000000B6] opacity-0 hover:opacity-100 relative transition-opacity duration-300">
