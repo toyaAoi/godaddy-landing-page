@@ -13,7 +13,10 @@ const Question = ({ question, children }) => {
 
   return (
     <div className="py-6 border-t border-t-neutral-300">
-      <div onClick={() => setOpen(!open)} className="flex gap-3 cursor-pointer">
+      <div
+        onClick={() => setOpen(!open)}
+        className="flex justify-between gap-3 cursor-pointer"
+      >
         <h3 className="font-semibold">{question}</h3>
         <button className={" h-4 text-base"}>
           <FontAwesomeIcon
@@ -168,65 +171,67 @@ const Questions = () => {
 const Guide = () => {
   return (
     <section className="">
-      {/* Local Guide */}
-      <div className="mt-12">
-        <figure className="relative h-80">
-          <img
-            src={guide}
-            alt="local guide image"
-            className="h-full object-cover"
-          />
-          <figcaption className="p-4 absolute top-2 left-0 text-sm ">
-            <span className="font-medium">Soraiya J.</span>
-            <br />
-            <span className="font-thin text-neutral-900">GoDaddy Guide</span>
-          </figcaption>
-        </figure>
+      <div className="sm:mt-12 sm:px-4 sm:bg-guide-tablet sm:bg-cover sm:bg-center sm:grid sm:grid-cols-2">
+        {/* Local Guide */}
+        <div className="max-sm:mt-12 sm:mt-4">
+          <figure className="relative h-80">
+            <img
+              src={guide}
+              alt="local guide image"
+              className="h-full object-cover sm:hidden"
+            />
+            <figcaption className="p-4 absolute top-2 left-0 text-sm ">
+              <span className="font-medium">Soraiya J.</span>
+              <br />
+              <span className="font-thin text-neutral-900">GoDaddy Guide</span>
+            </figcaption>
+          </figure>
+        </div>
+
+        {/* Ask a question */}
+        <div className="p-10 sm:py-20">
+          <div className="h-6">
+            <img src={guideLogo} alt="godaddy guide logo" className="h-full" />
+          </div>
+          <div className="mt-8 text-base">
+            <h2 className="text-[32px] font-abrilfatface leading-10">
+              Why go with GoDaddy?
+            </h2>
+            <p className="mt-4">
+              Because we know that even the best technology is only as good as
+              the people behind it. That&rsquo;s why we offer expert phone
+              support, plus a lot more.
+            </p>
+            <p className="mt-4">
+              Call our technical support team at 040-67607600.
+            </p>
+          </div>
+          <form className="h-[42px] mt-8">
+            <input
+              type="text"
+              placeholder="Type a question"
+              className="h-full w-[calc(100%-42px)] border-2 border-neutral-600 pl-4 placeholder:text-base placeholder:text-neutral-600 focus-visible:outline-none focus-visible:border-sky-600"
+            />
+            <button className="w-[42px] aspect-square bg-black text-white text-base">
+              <FontAwesomeIcon icon={faMagnifyingGlass} />
+            </button>
+          </form>
+          <div className="py-4 text-base font-semibold *:inline-block *:underline *:decoration-transparent">
+            <a
+              href="#"
+              className="mr-4 hover:decoration-black hover:scale-[1.02]"
+            >
+              View How-To Articles
+            </a>
+            <a href="#" className="hover:decoration-black hover:scale-[1.02]">
+              Read Our Blog
+            </a>
+          </div>
+        </div>
       </div>
 
-      {/* Ask a question */}
-      <div className="p-8">
-        <div className="h-6">
-          <img src={guideLogo} alt="godaddy guide logo" className="h-full" />
-        </div>
-        <div className="mt-8 text-base">
-          <h2 className="text-[32px] font-abrilfatface leading-10">
-            Why go with GoDaddy?
-          </h2>
-          <p className="mt-4">
-            Because we know that even the best technology is only as good as the
-            people behind it. That&rsquo;s why we offer expert phone support,
-            plus a lot more.
-          </p>
-          <p className="mt-4">
-            Call our technical support team at 040-67607600.
-          </p>
-        </div>
-        <form className="h-[42px] mt-8">
-          <input
-            type="text"
-            placeholder="Type a question"
-            className="h-full w-[calc(100%-42px)] border-2 border-neutral-600 pl-4 placeholder:text-base placeholder:text-neutral-600 focus-visible:outline-none focus-visible:border-sky-600"
-          />
-          <button className="w-[42px] aspect-square bg-black text-white text-base">
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
-          </button>
-        </form>
-        <div className="py-4 text-base font-semibold *:inline-block *:underline *:decoration-transparent">
-          <a
-            href="#"
-            className="mr-4 hover:decoration-black hover:scale-[1.02]"
-          >
-            View How-To Articles
-          </a>
-          <a href="#" className="hover:decoration-black hover:scale-[1.02]">
-            Read Our Blog
-          </a>
-        </div>
-      </div>
-
-      {/* Asked Questions */}
-      <div className="p-8">
+      {/* FAQ */}
+      <div className="p-8 mx-auto max-w-[570px]">
         <div className="text-center font-semibold">
           <h1 className="text-[32px] tracking-tight leading-10">
             Millions of customers rely on our domains and web hosting to get

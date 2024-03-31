@@ -69,10 +69,10 @@ const Deals = () => {
       ))}
       <a
         href="#"
-        className="w-full flex items-center border-gray-300 group [&>*]:w-1/2 [&>*]:text-center [&>*]:p-6 hover:bg-black hover:text-white"
+        className="w-full flex items-center border-gray-300 group [&>*]:w-1/2 [&>*]:text-center [&>*]:p-6 hover:bg-black hover:text-white sm:flex-col"
       >
         <p className="text-4xl ms-4">.ai</p>
-        <p className="">
+        <p className="sm:!pt-0">
           ₹ 4,957.85/1st yr, 2-yr term.
           <br />
           .ai is the future.

@@ -3,27 +3,44 @@ import { faGlobe, faPhone } from "@fortawesome/free-solid-svg-icons";
 import card1 from "../../assets/card1.webp";
 import card2 from "../../assets/card2.webp";
 import card5 from "../../assets/card5.webp";
+import card5Desktop from "../../assets/card5_desktop.webp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Card = ({ card }) => {
   return (
     <div
       className={
-        "my-4 relative overflow-hidden rounded-2xl " +
+        "relative overflow-hidden rounded-2xl max-sm:my-4 " +
         (card?.img
-          ? "h-96"
-          : "h-60 flex flex-col justify-center bg-neutral-100")
+          ? "max-sm:h-96"
+          : "max-sm:h-60 flex flex-col justify-center bg-neutral-100") +
+        (card?.span === 2 ? " sm:col-span-2" : " sm:aspect-[9/10]")
       }
     >
       {card?.img && (
         <img
           src={card.img}
           alt="background image"
-          className="absolute top-0 left-0 w-full z-[5]"
+          className={
+            "absolute top-0 left-0 w-full z-[5]" +
+            (card?.imgDesktop ? " sm:hidden" : "")
+          }
+        />
+      )}
+      {card?.imgDesktop && (
+        <img
+          src={card.imgDesktop}
+          alt="background image"
+          className="absolute top-0 left-0 w-full z-[5] max-sm:hidden"
         />
       )}
 
-      <div className="max-w-80 p-7 z-10 relative">
+      <div
+        className={
+          "max-w-80 z-10 relative max-sm:p-7 sm:p-4 " +
+          (card?.span === 2 ? "sm:w-1/2 sm:top-1/2 sm:-translate-y-1/2" : "")
+        }
+      >
         {card?.icon && (
           <FontAwesomeIcon
             icon={card.icon}
@@ -34,8 +51,9 @@ const Card = ({ card }) => {
           className={
             "py-2 font-semibold" +
             (card?.img
-              ? " text-white text-[23px]"
-              : " text-neutral-900 text-xl leading-6")
+              ? " text-white max-sm:text-[23px] sm:text-[17px] sm:leading-5"
+              : " text-neutral-900 text-[21px] leading-6") +
+            (card?.span === 2 ? " sm:text-black" : "")
           }
         >
           {card.title}
@@ -74,11 +92,16 @@ const Cards = () => {
       title:
         "Tools for every small business first — websites, email, marketing, and more.",
       img: card5,
+      imgDesktop: card5Desktop,
+      span: 2,
     },
   ];
 
   return (
-    <div>
+    <div
+      id="achievements-grid"
+      className="sm:mx-4 sm:mt-12 sm:grid sm:grid-cols-3 sm:gap-4"
+    >
       {cards.map((card) => (
         <Card key={card.id} card={card} />
       ))}
@@ -91,7 +114,7 @@ const Achievements = () => {
     <section className="my-24 mx-3.5 ">
       <div className="text-center text-neutral-900">
         <h3 className="text-[28px] font-bold">Why work with GoDaddy?</h3>
-        <p className="mt-6 font-semibold -tracking-[0.2px]">
+        <p className="mt-6 mx-auto font-semibold -tracking-[0.2px] max-w-lg">
           84+ million domains, 22 million customers, millions of websites, email
           and security — we help grow businesses.
         </p>

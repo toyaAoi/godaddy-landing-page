@@ -9,6 +9,11 @@ export default {
       backdropBrightness: {
         40: ".40",
       },
+      backgroundImage: {
+        "hero-bg-small": "url('./assets/hero-bg-small.webp')",
+        "hero-bg-medium": "url('./assets/hero-bg-medium.webp')",
+        "guide-tablet": "url('./assets/Guide-tablet.webp')",
+      },
       colors: {
         "black-haze": {
           50: "#f5f7f8",
@@ -63,7 +68,8 @@ export default {
         fadeIn: "fadeIn 0.5s forwards ease-out",
         fadeOut: "fadeOut 0.4s forwards ease-out ",
         moveInLeft: "moveInLeft 0.5s forwards ease-out",
-        moveLeft: "moveLeft 40s infinite linear",
+        moveLeft40: "moveLeft 40s infinite linear",
+        moveLeft70: "moveLeft 70s infinite linear",
       },
       keyframes: {
         fadeIn: {

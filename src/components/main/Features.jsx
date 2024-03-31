@@ -21,12 +21,17 @@ const VideoButton = () => {
   );
 };
 
-const Feature = ({ feature }) => {
+const Feature = ({ feature, index }) => {
   const { img, plan, heading, description, button } = feature;
 
   return (
-    <div className="mt-12">
-      <div>
+    <div
+      className={
+        "mt-12 sm:grid grid-cols-2 *:[direction:ltr] " +
+        (index % 2 ? "sm:[direction:rtl]" : null)
+      }
+    >
+      <div className="self-center">
         <img src={img} alt="banner" />
       </div>
       <div className="px-4">
@@ -34,9 +39,9 @@ const Feature = ({ feature }) => {
         <h3 className="my-4 text-[27px] font-abrilfatface leading-7">
           {heading}
         </h3>
-        <div>
+        <div className="text-stone-700">
           <p
-            className={`leading-6 font-medium text-[${description.fontSize}px]`}
+            className={`leading-6 fon text-[${description.fontSize}px] tracking-wide`}
           >
             {description.text}
           </p>
@@ -49,13 +54,13 @@ const Feature = ({ feature }) => {
               ))}
             </ul>
           )}
-        </div>
-        <div className="text-base">
-          <button className="mt-8 border-black border-2 px-4 py-1.5 rounded font-semibold hover:scale-[1.02] transition-transform duration-300">
-            {button}
-          </button>
+          <div className="text-base">
+            <button className="mt-8 border-black border-2 px-4 rounded font-semibold hover:scale-[1.02] transition-transform duration-300 max-sm:py-1.5 sm:py-2.5">
+              {button}
+            </button>
 
-          {feature?.videoButton && <VideoButton />}
+            {feature?.videoButton && <VideoButton />}
+          </div>
         </div>
       </div>
     </div>
@@ -69,7 +74,7 @@ const Features = () => {
       plan: "Microsoft 365",
       heading: "Empower Your Business with Microsoft 365",
       description: {
-        fontSize: "16",
+        fontSize: "15",
         text: "Microsoft 365 suite provides a robust set of tools and services that can improve productivity, collaboration, and security.",
         list: [
           "Productivity tools including Word, Excel, PowerPoint and Outlook.",
@@ -84,7 +89,7 @@ const Features = () => {
       plan: "WordPress Hosting",
       heading: "Built for speed and security",
       description: {
-        fontSize: "16",
+        fontSize: "15",
         text: "Get the most from your WordPress site with hosting designed to perform. From automated updates and backups to industry-leading load times, this is WordPress how it was meant to be.",
       },
       button: "See Plans",
@@ -94,7 +99,7 @@ const Features = () => {
       plan: "GoDaddy Pro Program",
       heading: "Free tools for designers and developers.",
       description: {
-        fontSize: "18",
+        fontSize: "17",
         text: "Save hours with bulk WordPress updates and automated backups, manage multiple clients from a single dashboard, get exclusive members-only discounts and more — all for free.",
       },
       button: "Learn More",
@@ -105,7 +110,7 @@ const Features = () => {
       plan: "GoDaddy Reseller Program",
       heading: "Start your business with our products.",
       description: {
-        fontSize: "18",
+        fontSize: "17",
         text: "Our Reseller Program lets you open your own online business in a matter of hours. You choose which GoDaddy products you want to sell — and for how much — and we provide the rest, from the web store to payment processing.",
       },
       button: "Choose Your Plan",
@@ -114,8 +119,8 @@ const Features = () => {
 
   return (
     <section className="px-[4vw] py-4">
-      {features.map((feature) => (
-        <Feature key={feature.plan} feature={feature} />
+      {features.map((feature, index) => (
+        <Feature key={feature.plan} feature={feature} index={index} />
       ))}
     </section>
   );
