@@ -81,7 +81,7 @@ const Review = ({ review }) => {
   const { rating, title, text, author } = review;
 
   return (
-    <div className="h-[450px] w-[270px] p-6 bg-black-haze-50 shrink-0 rounded-lg text-neutral-700">
+    <div className="h-[450px] min-w-[270px] max-w-[calc(50vw-2.5rem)] p-6 bg-black-haze-50 shrink-0 rounded-lg text-neutral-700">
       <div className="h-[calc(100%-1rem)]">
         <p className="text-xs uppercase tracking-widest font-semibold leading">
           {title}
@@ -178,10 +178,10 @@ const Reviews = () => {
   ];
 
   return (
-    <section className="px-4 mt-12 w-screen">
+    <section className="px-4 !mt-12 w-screen sm:m-4">
       <div>
         <h2 className="text-[28px] font-bold leading-9">
-          Trusted by 20+ million customers around the world.
+          Trusted by 20+ million <br /> customers around the world.
         </h2>
       </div>
 

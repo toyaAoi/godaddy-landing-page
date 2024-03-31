@@ -5,20 +5,22 @@ const MainLink = ({ title, links }) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="mb-6">
+    <div className="mb-6 sm:py-5">
       <div
         onClick={() => setOpen(!open)}
-        className="flex items-center justify-between cursor-pointer"
+        className="max-sm:flex max-sm:items-center max-sm:justify-between max-sm:cursor-pointer"
       >
-        <div className=" text-base font-semibold">{title}</div>
-        <div>{open ? "-" : "+"}</div>
+        <div className="text-base font-semibold max-sm:mb-2 sm:mb-5">
+          {title}
+        </div>
+        <div className="sm:hidden">{open ? "-" : "+"}</div>
       </div>
-      <div className={open ? "" : "hidden"}>
+      <div className={open ? "" : "max-sm:hidden"}>
         {links.map((link) => {
           return (
             <a
               key={link}
-              className="text-xs mt-2 mb-5 font-bold block text-[#b8c0c3]"
+              className="text-xs mb-7 font-bold block text-[#b8c0c3]"
             >
               {link}
             </a>
@@ -85,7 +87,7 @@ const MainLinks = () => {
   ];
 
   return (
-    <div className=" mx-4">
+    <div className="max-sm:mx-4 sm:mx-8 sm:grid sm:grid-cols-2">
       {links.map((link) => {
         return (
           <MainLink key={link.title} title={link.title} links={link.links} />
