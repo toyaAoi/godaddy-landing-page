@@ -12,7 +12,12 @@ export default {
       backgroundImage: {
         "hero-bg-small": "url('./assets/hero-bg-small.webp')",
         "hero-bg-medium": "url('./assets/hero-bg-medium.webp')",
+        "hero-bg-large": "url('./assets/hero-bg-large.webp')",
         "guide-tablet": "url('./assets/Guide-tablet.webp')",
+        "guide-desktop": "url('./assets/Guide-desktop.webp')",
+      },
+      boxShadow: {
+        temp1: "0 1px 5px #bbb",
       },
       colors: {
         "black-haze": {

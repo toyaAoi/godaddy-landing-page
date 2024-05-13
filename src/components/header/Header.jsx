@@ -7,10 +7,79 @@ import {
   faUser,
   faCartShopping,
   faMagnifyingGlass,
+  faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
+
+import dotCo from "../../assets/img-logo-tld-bar-gray_co.webp";
 
 import Sidebar from "./sidebar/Sidebar";
 import Hero from "./hero/Hero";
+
+const SubNavDesktop = () => {
+  return (
+    <div className="!h-auto !w-auto font-semibold *:m-1 *:py-2.5 *:px-3 *:rounded-lg hover:*:bg-neutral-600 max-xl:hidden">
+      <a href="#">Domains</a>
+      <a href="#">Website</a>
+      <a href="#" className="border-r border-neutral-600">
+        Hosting and Security
+      </a>
+      <a href="#">Email</a>
+      <a href="#" className="border-l border-neutral-600">
+        Pricing
+      </a>
+    </div>
+  );
+};
+
+const SignIn = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div
+      className={
+        "relative max-xl:hidden " +
+        (open ? "bg-white text-black hover:!bg-white hover:text-black" : null)
+      }
+    >
+      <button onClick={() => setOpen(!open)}>
+        Sign In <FontAwesomeIcon icon={faChevronDown} />
+      </button>
+
+      {open ? (
+        <>
+          <div className="!h-4 w-4 bg-white rotate-45 absolute -bottom-5 right-0 z-20" />
+          <div className="absolute bg-white !h-fit w-[350px] px-5 text-base font-medium top-[125%] -right-6 border border-stone-200 shadow-md rounded  *:h-max [&_a]:text-teal-700 *:*:my-4 z-10 divide-y ">
+            <div className="pb-4">
+              <h3 className="font-semibold">Registered Users</h3>
+              <p>Have an account? Sign in now.</p>
+              <a href="#" className="underline hover:no-underline">
+                Sign In
+              </a>
+            </div>
+            <div className="pb-4">
+              <h3 className="font-semibold">New Customer</h3>
+              <p>New to GoDaddy? Create an account to get started today.</p>
+              <a href="#" className="underline hover:no-underline">
+                Create an account
+              </a>
+            </div>
+            <div>
+              <h3 className="uppercase text-stone-600 text-xs font-semibold tracking-wider">
+                Inbox Links
+              </h3>
+              <a href="#" className="block">
+                Sign in to Office 365 Email
+              </a>
+              <a href="#" className="block">
+                Sign in to GoDaddy Webmail
+              </a>
+            </div>
+          </div>
+        </>
+      ) : null}
+    </div>
+  );
+};
 
 const Nav = ({ setOpen }) => {
   return (
@@ -18,13 +87,13 @@ const Nav = ({ setOpen }) => {
       role="navigation"
       aria-label="Main"
       id="nav"
-      className="mt-0.5 px-4 md:px-8 h-16 flex justify-between items-center bg-black text-white"
+      className="max-xl:px-4 xl:px-[3.5vw] md:px-8 h-16 flex justify-between items-center bg-black text-white max-sm:mt-0.5"
     >
       <div>
-        <div onClick={() => setOpen(true)} className="">
+        <div onClick={() => setOpen(true)} className="xl:!hidden">
           <FontAwesomeIcon icon={faBars} />
         </div>
-        <div>
+        <div className="relative xl:!ml-0 xl:scale-90">
           {/* Logo */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -63,18 +132,31 @@ const Nav = ({ setOpen }) => {
               d="M27.889 30.386v-.21c0-.015.005-.03.015-.04a.048.048 0 01.038-.015h1.342c.014-.001.028.004.038.015.01.01.016.025.015.04v.21a.051.051 0 01-.015.04.048.048 0 01-.038.014h-.49v1.322a.05.05 0 01-.017.04.051.051 0 01-.038.017h-.253a.055.055 0 01-.038-.017.06.06 0 01-.015-.04V30.44h-.49a.048.048 0 01-.039-.015.051.051 0 01-.015-.04zm2.345-.217l.374.848.375-.848a.073.073 0 01.03-.036.08.08 0 01.05-.012h.4a.051.051 0 01.053.053v1.592a.056.056 0 01-.013.037.05.05 0 01-.037.016h-.24a.055.055 0 01-.038-.016.056.056 0 01-.015-.037v-1.203l-.393.874a.09.09 0 01-.03.04.086.086 0 01-.05.013h-.194a.085.085 0 01-.048-.012.09.09 0 01-.03-.041l-.393-.874v1.203a.05.05 0 01-.015.037.053.053 0 01-.036.016h-.243a.05.05 0 01-.036-.016.056.056 0 01-.015-.037v-1.592a.05.05 0 01.017-.038.047.047 0 01.036-.015h.413a.083.083 0 01.049.012.071.071 0 01.029.036z"
             ></path>
           </svg>
+          <span className="absolute top-full right-0 text-xs max-sm:hidden">
+            India
+          </span>
         </div>
+        <SubNavDesktop />
       </div>
 
-      <div>
+      <div className="xl:text-[13px] xl:*:!ml-6 font-bold *:py-2 *:px-3 *:rounded-lg hover:*:bg-neutral-600">
         <div>
-          <FontAwesomeIcon icon={faQuestion} />
+          <a href="#">
+            <span className="max-xl:hidden">Contact Us</span>
+            <FontAwesomeIcon icon={faQuestion} className="xl:hidden" />
+          </a>
         </div>
         <div>
-          <FontAwesomeIcon icon={faUser} />
+          <a href="#">
+            <span className="max-xl:hidden">Help</span>
+            <FontAwesomeIcon icon={faUser} className="xl:hidden" />
+          </a>
         </div>
+        <SignIn />
         <div>
-          <FontAwesomeIcon icon={faCartShopping} />
+          <a href="#">
+            <FontAwesomeIcon icon={faCartShopping} />
+          </a>
         </div>
       </div>
     </div>
@@ -83,17 +165,23 @@ const Nav = ({ setOpen }) => {
 
 const Search = () => {
   return (
-    <form className="mx-4 md:mx-8 my-4 h-14 bg-teal-700 border border-gray-500 focus-visible:outline-blue-500">
+    <form className="max-xl:mx-4 md:max-xl:mx-8 max-xl:my-6 max-xl:h-14 xl:h-[5.4rem] max-lg:bg-teal-700 border border-stone-300 focus-visible:outline-blue-500 max-xl:rounded-lg xl:rounded-xl overflow-hidden shadow-temp1 xl:relative xl:grow">
       <input
         type="text"
-        placeholder="Find your perfect domain"
-        className="px-11  w-[calc(100%-3.2rem)] h-full bg-mercury-100 focus-visible:outline-none placeholder:text-base"
+        placeholder="Type the domain you want"
+        className="px-5  max-xl:w-[calc(100%-3.2rem)] w-full h-full focus-visible:outline-none max-xl:placeholder:text-base xl:desktop-search-input"
       />
-      <button className="inline-block  w-12 h-12">
+      {/* Search icon */}
+      <FontAwesomeIcon
+        icon={faMagnifyingGlass}
+        className="text-neutral-500 text-lg absolute top-1/2 -translate-y-1/2 left-6 max-xl:!hidden"
+      />
+      <button className="inline-block max-xl:w-12 h-12 xl:desktop-search-button">
         <FontAwesomeIcon
           icon={faMagnifyingGlass}
-          className="text-white text-lg"
+          className="text-white text-lg xl:hidden"
         />
+        <span className="max-xl:hidden">Search Domains</span>
       </button>
     </form>
   );
@@ -106,8 +194,16 @@ const Header = () => {
     <>
       <Nav setOpen={setOpen} />
       <Sidebar open={open} setOpen={setOpen} />
-
-      <Search />
+      <div className="xl:search-container">
+        <Search />
+        <a href="#" className='max-xl:hidden flex items-center gap-4 p-4 rounded-xl border border-transparent transition-colors hover:bg-white hover:border-neutral-400'>
+          <img src={dotCo} alt="link_icon" className='w-14 h-14' />
+          <div className="max-xl:hidden">
+            <div className='text-base font-semibold'>₹ 999.oo/1st yr.</div>
+            <div className='text-xs font-thin tracking-wider'>Get recognized with .co</div>
+          </div>
+        </a>
+      </div>
       <Hero />
     </>
   );
