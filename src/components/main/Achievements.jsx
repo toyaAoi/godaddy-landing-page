@@ -37,22 +37,22 @@ const Card = ({ card }) => {
 
       <div
         className={
-          "max-w-80 z-10 relative max-sm:p-7 sm:p-4 " +
+          "max-xl:max-w-80 z-10 relative max-sm:p-7 sm:max-xl:p-4 xl:p-8 " +
           (card?.span === 2 ? "sm:w-1/2 sm:top-1/2 sm:-translate-y-1/2" : "")
         }
       >
         {card?.icon && (
           <FontAwesomeIcon
             icon={card.icon}
-            className="text-[#02a2a7] text-[26px]"
+            className="text-[#02a2a7] max-xl:text-[26px] xl:text-4xl"
           />
         )}
         <p
           className={
-            "py-2 font-semibold" +
+            "py-2 font-semibold xl:text-3xl" +
             (card?.img
-              ? " text-white max-sm:text-[23px] sm:text-[17px] sm:leading-5"
-              : " text-neutral-900 text-[21px] leading-6") +
+              ? " text-white max-sm:text-[23px] sm:max-xl:text-[17px] sm:leading-5"
+              : " text-neutral-900 max-xl:text-[21px] leading-6") +
             (card?.span === 2 ? " sm:text-black" : "")
           }
         >
@@ -100,7 +100,7 @@ const Cards = () => {
   return (
     <div
       id="achievements-grid"
-      className="sm:mx-4 sm:mt-12 sm:grid sm:grid-cols-3 sm:gap-4"
+      className="sm:max-xl:mx-4 sm:max-xl:mt-12 sm:grid sm:grid-cols-3 sm:max-xl:gap-4 xl:mx-36 xl:mt-16 xl:gap-6"
     >
       {cards.map((card) => (
         <Card key={card.id} card={card} />
@@ -113,7 +113,9 @@ const Achievements = () => {
   return (
     <section className="my-24 mx-3.5 ">
       <div className="text-center text-neutral-900">
-        <h3 className="text-[28px] font-bold">Why work with GoDaddy?</h3>
+        <h3 className="max-xl:text-[28px] xl:text-5xl max-xl:font-bold xl:font-semibold">
+          Why work with GoDaddy?
+        </h3>
         <p className="mt-6 mx-auto font-semibold -tracking-[0.2px] max-w-lg">
           84+ million domains, 22 million customers, millions of websites, email
           and security — we help grow businesses.
