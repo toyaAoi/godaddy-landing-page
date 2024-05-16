@@ -63,7 +63,7 @@ const Deals = () => {
   ];
 
   return (
-    <section className="mx-4 flex flex-wrap text-base font-semibold rounded border border-gray-300 [&>*:nth-child(n+3)]:border-t [&_*]:transition-ease-elastic">
+    <section className="mx-4 xl:my-8 flex flex-wrap text-base font-semibold rounded border border-gray-300 [&>*:nth-child(n+3)]:border-t [&_*]:transition-ease-elastic">
       {services.map((service) => (
         <Deal key={service.service} service={service} />
       ))}
