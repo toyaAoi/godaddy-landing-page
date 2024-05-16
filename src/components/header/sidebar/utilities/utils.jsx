@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import {
   faArrowRightLong,
@@ -87,9 +86,9 @@ const Wrapper = ({ openedSection = null, setOpenedSection, children }) => {
   return (
     <div
       className={
-        "h-full w-full p-4 pr-6 " +
+        "h-full p-4 pr-6 max-sm:w-[calc(100vw-3.375rem)] sm:w-[22rem] " +
         (openedSection
-          ? "bg-neutral-100 absolute top-0 left-0 overflow-y-scroll"
+          ? "bg-neutral-100 absolute top-0 max-sm:left-0 sm:left-1/2 overflow-y-scroll"
           : "bg-white")
       }
     >
@@ -99,7 +98,7 @@ const Wrapper = ({ openedSection = null, setOpenedSection, children }) => {
             <FontAwesomeIcon icon={faChevronLeft} className="left-3 relative" />
           </button>
         ) : (
-          <div className="relative">
+          <div className="relative inline-block">
             <SidebarLogo />
             <span className="absolute text-[10px] right-0 -bottom-6 max-sm:hidden">
               India

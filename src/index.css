@@ -16,7 +16,7 @@
   }
 
   #nav > div > div:not(:has(.logo)) {
-    @apply inline-block h-5 w-5;
+    @apply max-xl:h-5 max-xl:w-5;
   }
 
   #nav > div > div:has(.logo) {
@@ -31,6 +31,22 @@
 @layer components {
   .sideways {
     @apply transition-transform duration-500 h-[calc(100%-32px)] w-full absolute left-0 top-8;
+  }
+
+  .desktop-search-input {
+    @apply pl-14;
+  }
+
+  .desktop-search-input::placeholder {
+    @apply text-2xl font-semibold text-neutral-500;
+  }
+
+  .desktop-search-button {
+    @apply absolute h-16 py-3 px-8 right-2.5 top-2.5 bg-teal-700 text-base text-white font-bold rounded-md hover:bg-teal-900;
+  }
+
+  .search-container {
+    @apply flex gap-1 items-center my-4 p-1.5 mx-[4vw] bg-neutral-100 rounded-2xl
   }
 }
 
