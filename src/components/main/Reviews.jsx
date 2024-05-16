@@ -1,6 +1,11 @@
 /* eslint-disable react/prop-types */
-import { cloneElement } from "react";
+import { cloneElement, useState } from "react";
 import trustpilotLogo from "../../assets/trustpilot.png";
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const ReviewRating = ({ rating, size }) => {
   const star = (value, size) => {
@@ -81,7 +86,7 @@ const Review = ({ review }) => {
   const { rating, title, text, author } = review;
 
   return (
-    <div className="h-[450px] min-w-[270px] max-w-[calc(50vw-2.5rem)] p-6 bg-black-haze-50 shrink-0 rounded-lg text-neutral-700">
+    <div className="h-[450px] max-xl:min-w-[270px] max-xl:max-w-[calc(50vw-2.5rem)] xl:w-[32%] max-xl:p-6 xl:p-10 bg-black-haze-50 shrink-0 rounded-lg text-neutral-700 relative">
       <div className="h-[calc(100%-1rem)]">
         <p className="text-xs uppercase tracking-widest font-semibold leading">
           {title}
@@ -91,8 +96,10 @@ const Review = ({ review }) => {
         </div>
         <p
           className={
-            "leading-7" +
-            (text.split("").length > 160 ? " text-xl" : " text-2xl")
+            "leading-7 xl:text-3xl" +
+            (text.split("").length > 160
+              ? " max-xl:text-xl"
+              : " max-xl:text-2xl")
           }
         >
           {text}
@@ -177,18 +184,49 @@ const Reviews = () => {
     },
   ];
 
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleSlide = (change) => {
+    console.log(change, activeIndex + change);
+    const changedIndex = activeIndex + change;
+    if (changedIndex >= 0 && changedIndex < reviews.length - 3) {
+      setActiveIndex(activeIndex + change);
+    }
+    return;
+  };
+
   return (
-    <section className="px-4 !mt-12 w-screen sm:m-4">
+    <section className="max-xl:px-4 xl:px-[3vw] !mt-12 w-screen sm:m-4">
       <div>
-        <h2 className="text-[28px] font-bold leading-9">
+        <h2 className="max-xl:text-[28px] xl:text-5xl font-bold max-xl:leading-9">
           Trusted by 20+ million <br /> customers around the world.
         </h2>
       </div>
 
-      <div className="mt-5 flex flex-nowrap gap-4 w-full overflow-x-scroll">
-        {reviews.map((review) => (
-          <Review key={review.id} review={review} />
-        ))}
+      <div className="mt-5 relative max-xl:overflow-x-scroll xl:overflow-x-hidden">
+        <div
+          className="mt-5 flex flex-nowrap max-xl:gap-4 xl:gap-6 w-full xl:transition-transform"
+          style={{
+            transform: `translateX(-${activeIndex * 33.33}vw)`,
+          }}
+        >
+          {reviews.map((review) => (
+            <Review key={review.id} review={review} />
+          ))}
+        </div>
+
+        <div className=" absolute top-[110%] right-[2vw] flex gap-4 justify-end *:h-14 *:w-14 *:rounded-full *:border-2 *:border-black">
+          <button onClick={() => handleSlide(-1)}>
+            <FontAwesomeIcon icon={faChevronLeft} />
+          </button>
+          <button onClick={() => handleSlide(1)}>
+            <FontAwesomeIcon icon={faChevronRight} />
+          </button>
+          <img
+            src="https://images.unsplash.com/photo-1559981421-3e0c0d712e3b?q=80&w=1432&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt=""
+          />
+        </div>
       </div>
 
       <div className="mt-10">
@@ -198,7 +236,11 @@ const Reviews = () => {
             <ReviewRating rating={4.7} size={"30px"} />
           </div>
           <p className="text-sm">
-            4.7 out of 5 stars based on <strong>91,674</strong> reviews <br />
+            4.7 out of 5 stars based on <strong>91,674</strong> reviews{" "}
+            <br className="xl:hidden" />
+            <span className="hidden xl:inline-block text-2xl font-thin text-blue-100 mx-2">
+              |{" "}
+            </span>
             Showing our 4 and 5 stars reviews.
           </p>
         </a>
