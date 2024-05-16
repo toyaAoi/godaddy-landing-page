@@ -26,8 +26,8 @@ const Template = ({ src }) => {
     <div
       key={src.mobile}
       className={
-        "h-60 ml-4 rounded-xl relative inline-block overflow-hidden max-sm:w-[8.5rem]" +
-        (src.desktop ? " sm:aspect-[1.56]" : " sm:w-[8.5rem]")
+        "max-xl:h-60 xl:h-[438px] max-xl:ml-4 xl:ml-10 rounded-xl relative inline-block overflow-hidden max-sm:w-[8.5rem]" +
+        (src.desktop ? " sm:aspect-[1.56]" : " sm:aspect-[0.56]")
       }
     >
       {src.desktop ? (
@@ -48,9 +48,25 @@ const Template = ({ src }) => {
         src={src.mobile}
         alt=""
       />
-      <button className="text-white w-full h-full z-10 bg-[#000000B6] opacity-0 hover:opacity-100 relative transition-opacity duration-300">
-        <FontAwesomeIcon icon={faEye} />
-      </button>
+      <div className="w-full h-full bg-[#000000B6] relative z-10 opacity-0 transition-opacity duration-300 hover:opacity-100">
+        <button className="text-white w-full h-full xl:hidden">
+          <FontAwesomeIcon icon={faEye} />
+        </button>
+        <div className="*:block *:text-base absolute top-1/2 -translate-y-1/2 left-0 right-0">
+          <a
+            href="#"
+            className="bg-white mx-auto py-4 px-8 rounded-lg font-semibold w-48 max-w-[60%] hover:scale-105 transition-transform"
+          >
+            Start Editing
+          </a>
+          <a
+            href="#"
+            className="text-white hover:underline hover:scale-105 transition-transform"
+          >
+            Preview
+          </a>
+        </div>
+      </div>
     </div>
   );
 };
@@ -99,8 +115,10 @@ const Templates = () => {
 
   return (
     <section className="mt-16 py-8 bg-mercury-100 text-center">
-      <div>
-        <h2 className="text-3xl font-bold mt-4">Templates designed to sell.</h2>
+      <div className="xl:mb-16">
+        <h2 className="max-xl:text-3xl xl:text-5xl max-xl:font-bold xl:font-semibold mt-4">
+          Templates designed to sell.
+        </h2>
         <p className="my-6 font-semibold">
           Choose from 100s of designs for every idea and industry.
         </p>
@@ -117,7 +135,7 @@ const Templates = () => {
           <Carousel />
         </div>
       </div>
-      <div className="relative mb-3 max-sm:mt-6 sm:mt-8">
+      <div className="relative max-xl:mb-3 xl:mb-6 max-sm:mt-6 sm:mt-8">
         <a
           href="#"
           className="font-semibold bg-black text-white text-base rounded-md inline-block transition-all duration-300 max-sm:hover:scale-[1.02] max-sm:px-4 max-sm:py-2 sm:px-8 sm:py-3.5 group *:transition-all *:duration-300"
@@ -132,7 +150,7 @@ const Templates = () => {
           </span>
         </a>
         <button
-          className="w-[50px] aspect-square absolute right-2 -top-4 border-2 border-neutral-400 text-neutral-400 rounded-full p-2 hover:border-neutral-950 hover:text-neutral-950 transition-colors duration-300"
+          className="w-[50px] xl:mr-8 aspect-square absolute right-2 max-xl:-top-4 border-2 border-neutral-400 text-neutral-400 rounded-full p-2 hover:border-neutral-950 hover:text-neutral-950 transition-colors duration-300"
           onClick={() => setPlay(!play)}
         >
           <FontAwesomeIcon icon={play ? faPause : faPlay} />
