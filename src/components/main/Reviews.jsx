@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { cloneElement, useState } from "react";
+import { cloneElement, forwardRef, useEffect, useRef, useState } from "react";
 import trustpilotLogo from "../../assets/trustpilot.png";
 import {
   faChevronLeft,
@@ -82,11 +82,14 @@ const ReviewRating = ({ rating, size }) => {
   return <div className="flex gap-[2px]">{stars}</div>;
 };
 
-const Review = ({ review }) => {
+const Review = forwardRef(({ review }, ref) => {
   const { rating, title, text, author } = review;
 
   return (
-    <div className="h-[450px] max-xl:min-w-[270px] max-xl:max-w-[calc(50vw-2.5rem)] xl:w-[32%] max-xl:p-6 xl:p-10 bg-black-haze-50 shrink-0 rounded-lg text-neutral-700 relative">
+    <div
+      className="review h-[450px] max-xl:min-w-[270px] max-xl:max-w-[calc(50vw-2.5rem)] xl:w-[31.5%] max-xl:p-6 xl:p-10 bg-black-haze-50 shrink-0 rounded-lg text-neutral-700 relative"
+      ref={ref}
+    >
       <div className="h-[calc(100%-1rem)]">
         <p className="text-xs uppercase tracking-widest font-semibold leading">
           {title}
@@ -96,7 +99,7 @@ const Review = ({ review }) => {
         </div>
         <p
           className={
-            "leading-7 xl:text-3xl" +
+            "leading-7 xl:text-2xl font-medium" +
             (text.split("").length > 160
               ? " max-xl:text-xl"
               : " max-xl:text-2xl")
@@ -108,7 +111,9 @@ const Review = ({ review }) => {
       <p className="text-sm font-semibold">{author}</p>
     </div>
   );
-};
+});
+
+Review.displayName = "Review";
 
 const Reviews = () => {
   const reviews = [
@@ -185,12 +190,18 @@ const Reviews = () => {
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);
+  const [reviewCardWidth, setReviewCardWidth] = useState(0);
+
+  const reviewRef = useRef(null);
+
+  useEffect(() => {
+    setReviewCardWidth(reviewRef.current.offsetWidth);
+  }, []);
 
   const handleSlide = (change) => {
-    console.log(change, activeIndex + change);
     const changedIndex = activeIndex + change;
     if (changedIndex >= 0 && changedIndex < reviews.length - 3) {
-      setActiveIndex(activeIndex + change);
+      setActiveIndex(changedIndex);
     }
     return;
   };
@@ -205,27 +216,25 @@ const Reviews = () => {
 
       <div className="mt-5 relative max-xl:overflow-x-scroll xl:overflow-x-hidden">
         <div
-          className="mt-5 flex flex-nowrap max-xl:gap-4 xl:gap-6 w-full xl:transition-transform"
+          className="mt-5 flex flex-nowrap max-xl:gap-4 xl:gap-6 w-full transition-transform"
           style={{
-            transform: `translateX(-${activeIndex * 33.33}vw)`,
+            transform: `translateX(calc(-${
+              activeIndex * reviewCardWidth + activeIndex * 24
+            }px))`,
           }}
         >
           {reviews.map((review) => (
-            <Review key={review.id} review={review} />
+            <Review key={review.id} review={review} ref={reviewRef} />
           ))}
         </div>
 
-        <div className=" absolute top-[110%] right-[2vw] flex gap-4 justify-end *:h-14 *:w-14 *:rounded-full *:border-2 *:border-black">
+        <div className="max-xl:hidden mt-10 mr-8 flex gap-4 justify-end *:h-14 *:w-14 *:rounded-full *:border-2 *:border-black">
           <button onClick={() => handleSlide(-1)}>
             <FontAwesomeIcon icon={faChevronLeft} />
           </button>
           <button onClick={() => handleSlide(1)}>
             <FontAwesomeIcon icon={faChevronRight} />
           </button>
-          <img
-            src="https://images.unsplash.com/photo-1559981421-3e0c0d712e3b?q=80&w=1432&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt=""
-          />
         </div>
       </div>
 
