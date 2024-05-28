@@ -12,12 +12,12 @@ const Question = ({ question, children }) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="py-6 border-t border-t-neutral-300">
+    <div className="max-xl:py-6 xl:py-8 border-t border-t-neutral-300">
       <div
         onClick={() => setOpen(!open)}
         className="flex justify-between gap-3 cursor-pointer"
       >
-        <h3 className="font-semibold">{question}</h3>
+        <h3 className="xl:text-[28px] font-semibold">{question}</h3>
         <button className={" h-4 text-base"}>
           <FontAwesomeIcon
             icon={faChevronUp}
@@ -25,7 +25,7 @@ const Question = ({ question, children }) => {
           />
         </button>
       </div>
-      <div className={"mt-4 text-base" + (open ? "" : " hidden")}>
+      <div className={"mt-4 text-base xl:w-3/4" + (open ? "" : " hidden")}>
         {children}
       </div>
     </div>
@@ -55,7 +55,7 @@ const Questions = () => {
           Even small local businesses that only serve their hometown need a
           site. That&rsquo;s because the web is te first place people go when
           looking for a product or service. A website helps every business:
-          <ul className="list-disc ml-5 mb-3.5 *:mt-3">
+          <ul className="list-disc max-xl:ml-5 xl:ml-10 mb-3.5 *:mt-3">
             <li>Promote and sell their products and services</li>
             <li>Connect with new customers (and keep existing customers)</li>
             <li>Build credibility</li>
@@ -171,7 +171,7 @@ const Questions = () => {
 const Guide = () => {
   return (
     <section className="">
-      <div className="sm:mt-12 sm:px-4 sm:bg-guide-tablet sm:bg-cover sm:bg-center sm:grid sm:grid-cols-2">
+      <div className="sm:mt-12 sm:px-4 sm:max-xl:bg-guide-tablet xl:bg-guide-desktop sm:bg-cover sm:bg-center sm:grid sm:grid-cols-2">
         {/* Local Guide */}
         <div className="max-sm:mt-12 sm:mt-4">
           <figure className="relative h-80">
@@ -180,7 +180,7 @@ const Guide = () => {
               alt="local guide image"
               className="h-full object-cover sm:hidden"
             />
-            <figcaption className="p-4 absolute top-2 left-0 text-sm ">
+            <figcaption className="p-4 absolute max-xl:top-2 xl:top-8 max-xl:left-0 xl:left-8 text-sm ">
               <span className="font-medium">Soraiya J.</span>
               <br />
               <span className="font-thin text-neutral-900">GoDaddy Guide</span>
@@ -189,12 +189,12 @@ const Guide = () => {
         </div>
 
         {/* Ask a question */}
-        <div className="p-10 sm:py-20">
+        <div className="p-10 sm:max-xl:py-20 xl:py-28 xl:max-w-2xl">
           <div className="h-6">
             <img src={guideLogo} alt="godaddy guide logo" className="h-full" />
           </div>
           <div className="mt-8 text-base">
-            <h2 className="text-[32px] font-abrilfatface leading-10">
+            <h2 className="max-xl:text-[32px] xl:text-6xl font-abrilfatface max-xl:leading-10 xl:leading-[4.5rem]">
               Why go with GoDaddy?
             </h2>
             <p className="mt-4">
@@ -202,42 +202,52 @@ const Guide = () => {
               the people behind it. That&rsquo;s why we offer expert phone
               support, plus a lot more.
             </p>
-            <p className="mt-4">
-              Call our technical support team at 040-67607600.
-            </p>
-          </div>
-          <form className="h-[42px] mt-8">
-            <input
-              type="text"
-              placeholder="Type a question"
-              className="h-full w-[calc(100%-42px)] border-2 border-neutral-600 pl-4 placeholder:text-base placeholder:text-neutral-600 focus-visible:outline-none focus-visible:border-sky-600"
-            />
-            <button className="w-[42px] aspect-square bg-black text-white text-base">
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
-            </button>
-          </form>
-          <div className="py-4 text-base font-semibold *:inline-block *:underline *:decoration-transparent">
-            <a
-              href="#"
-              className="mr-4 hover:decoration-black hover:scale-[1.02]"
-            >
-              View How-To Articles
-            </a>
-            <a href="#" className="hover:decoration-black hover:scale-[1.02]">
-              Read Our Blog
-            </a>
+            <div className="xl:hidden">
+              <p className="mt-4">
+                Call our technical support team at 040-67607600.
+              </p>
+              <form className="h-[42px] mt-8">
+                <input
+                  type="text"
+                  placeholder="Type a question"
+                  className="h-full w-[calc(100%-42px)] border-2 border-neutral-600 pl-4 placeholder:text-base placeholder:text-neutral-600 focus-visible:outline-none focus-visible:border-sky-600"
+                />
+                <button className="w-[42px] aspect-square bg-black text-white text-base">
+                  <FontAwesomeIcon icon={faMagnifyingGlass} />
+                </button>
+              </form>
+              <div className="py-4 text-base font-semibold *:inline-block *:underline *:decoration-transparent">
+                <a
+                  href="#"
+                  className="mr-4 hover:decoration-black hover:scale-[1.02]"
+                >
+                  View How-To Articles
+                </a>
+                <a
+                  href="#"
+                  className="hover:decoration-black hover:scale-[1.02]"
+                >
+                  Read Our Blog
+                </a>
+              </div>
+            </div>
+            <div>
+              <button className="mt-6 py-3.5 px-12 bg-black text-white font-bold rounded-md">
+                Get Help
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
       {/* FAQ */}
-      <div className="p-8 mx-auto max-w-[570px]">
+      <div className="p-8 mx-auto max-xl:max-w-xl xl:max-w-4xl">
         <div className="text-center font-semibold">
-          <h1 className="text-[32px] tracking-tight leading-10">
+          <h1 className="max-xl:text-[32px] xl:text-5xl xl:px-36 max-xl:tracking-tight max-xl:leading-10 xl:leading-[3.5rem]">
             Millions of customers rely on our domains and web hosting to get
             their ideas online.
           </h1>
-          <h2 className="text-[29px] mt-4 leading-9">
+          <h2 className="max-xl:text-[29px] xl:text-[32px] max-xl:mt-4 xl:mt-6 leading-9">
             Frequently Asked Questions
           </h2>
         </div>

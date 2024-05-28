@@ -10,9 +10,9 @@ import MainLinks from "./MainLinks";
 
 const Footer = () => {
   return (
-    <footer className="py-8 bg-black text-white ">
+    <footer className="py-8 bg-black text-white xl:px-[2%]">
       <MainLinks />
-      <div className="grid max-sm:[grid-template-areas:'lo_lo_._._''hr_hr_hr_hr''cr_cr_cr_cr''sl_sl_sl_sl'] sm:[grid-template-areas:'._cr_._._''hr_hr_hr_hr''lo_lo_._sl']">
+      <div className="grid max-sm:[grid-template-areas:'lo_lo_._._''hr_hr_hr_hr''cr_cr_cr_cr''sl_sl_sl_sl'] sm:max-xl:[grid-template-areas:'._cr_._._''hr_hr_hr_hr''lo_lo_._sl'] xl:[grid-template-areas:'lo_cr_._sl''hr_hr_hr_hr']">
         <div className="p-4 [grid-area:lo] sm:ml-4">
           <svg
             viewBox="0 0 166 34"
@@ -44,7 +44,7 @@ const Footer = () => {
           </a>
         </div>
       </div>
-      <div className="sm:flex sm:flex-row-reverse sm:mx-4 sm:gap-4">
+      <div className="sm:flex sm:flex-row-reverse sm:mx-4 sm:gap-4 xl:mt-6">
         <div className="my-6 mx-4 text-[13px] flex gap-4 font-semibold sm:shrink-0 sm:mt-0">
           <a href="#">Legal</a>
           <a href="#">Privacy Policy</a>

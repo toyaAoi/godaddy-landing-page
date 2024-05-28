@@ -43,7 +43,9 @@ const Sidebar = ({ open, setOpen }) => {
           (open ? "translate-x-0 " : "-translate-x-full")
         }
       >
-        <div className="h-full w-[calc(100%-3.375rem)] relative">
+        <div
+          className={"h-full relative " + (openedSection ? "sm:w-[44rem]" : "")}
+        >
           {open ? <MainMenu setOpenedSection={setOpenedSection} /> : null}
 
           {open && openedSection === "Domains" ? (

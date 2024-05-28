@@ -20,7 +20,7 @@ const MainLink = ({ title, links }) => {
           return (
             <a
               key={link}
-              className="text-xs mb-7 font-bold block text-[#b8c0c3]"
+              className="text-xs max-xl:mb-7 xl:mb-5 font-bold block text-[#b8c0c3]"
             >
               {link}
             </a>
@@ -87,7 +87,7 @@ const MainLinks = () => {
   ];
 
   return (
-    <div className="max-sm:mx-4 sm:mx-8 sm:grid sm:grid-cols-2">
+    <div className="max-sm:mx-4 sm:mx-8 sm:grid sm:grid-cols-2 xl:grid-cols-6 gap-12">
       {links.map((link) => {
         return (
           <MainLink key={link.title} title={link.title} links={link.links} />

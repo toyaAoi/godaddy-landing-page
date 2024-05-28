@@ -32,11 +32,11 @@ const Feature = ({ feature, index }) => {
       }
     >
       <div className="self-center">
-        <img src={img} alt="banner" />
+        <img src={img} alt="banner" className="w-full object-cover" />
       </div>
-      <div className="px-4">
+      <div className="max-xl:px-4 xl:p-16 xl:flex xl:flex-col xl:justify-center">
         <h2 className="text-base font-semibold">{plan}</h2>
-        <h3 className="my-4 text-[27px] font-abrilfatface leading-7">
+        <h3 className="my-4 max-xl:text-[27px] xl:text-5xl font-abrilfatface leading-7">
           {heading}
         </h3>
         <div className="text-stone-700">
@@ -46,7 +46,7 @@ const Feature = ({ feature, index }) => {
             {description.text}
           </p>
           {description.list && (
-            <ul className="mt-4 pl-5 list-disc">
+            <ul className="mt-4 max-xl:pl-5 xl:pl-10 list-disc">
               {description.list.map((item, index) => (
                 <li key={index} className="indent-1 font-semibold">
                   {item}
